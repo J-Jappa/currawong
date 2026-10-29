@@ -1,0 +1,37 @@
+{
+  "width": 240,
+  "height": 400,
+  "fps": 30,
+  "frames": 292,
+  "duration": 9.7,
+  "bytes_per_frame": 12000,
+  "bit_order": "MSB first, row-major, 1 = ink (black), 0 = background",
+  "wordmark": "italic",
+  "scenes": [
+    {
+      "name": "Perch",
+      "start_frame": 0,
+      "end_frame": 96,
+      "desc": "The currawong glances left, calls out, and turns to face right"
+    },
+    {
+      "name": "Launch",
+      "start_frame": 96,
+      "end_frame": 138,
+      "desc": "It crouches, opens its wings and leaps off the ledge, shedding feathers"
+    },
+    {
+      "name": "Swoop",
+      "start_frame": 138,
+      "end_frame": 195,
+      "desc": "It flies back in low, the wordmark appearing in its wake, and lands on the G"
+    },
+    {
+      "name": "Lockup",
+      "start_frame": 195,
+      "end_frame": 291,
+      "desc": "Perched on the wordmark, it blinks, looks back over the word and calls; the personal mark forms underneath"
+    }
+  ],
+  "hold_frame": 291
+}

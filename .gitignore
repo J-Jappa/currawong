@@ -1,0 +1,40 @@
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editors and tools
+.vscode/
+.claude/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+preview/
+preview_bird/
+
+# PlatformIO
+firmware/**/.pio/
+
+# KiCad
+*.kicad_prl
+*-backups/
+.history/
+fp-info-cache
+*.bak
+*.lck
+_autosave-*
+*.dsn
+*.ses
+hs_err_pid*.log
+
+# SolidWorks temp and lock files
+~$*
+*.err
+
+# Music never goes in this repo
+*.flac
+*.mp3
+*.m4a
+*.wav

@@ -1,0 +1,12 @@
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+*.SLDPRT binary
+*.SLDASM binary
+*.STL binary
+*.3mf binary
+*.step binary
+*.STEP binary
+*.zip binary
+*.bin binary
+*.anim binary
