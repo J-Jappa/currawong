@@ -7,9 +7,8 @@ A pocket music player with a haptic dial. Streams Spotify, plays local FLAC, and
 </p>
 
 <p align="center">
-  <img src="docs/media/ui/spotify.png" width="180" alt="Spotify Now Playing">
   <img src="docs/media/ui/bird-playing.gif" width="180" alt="Now Playing with the currawong singing">
-  <img src="docs/media/ui/menu.png" width="180" alt="Main menu">
+  <img src="docs/media/ui/bird-menu.gif" width="180" alt="Main menu with the currawong in the corner">
   <img src="docs/media/ui/equaliser.png" width="180" alt="Equaliser">
 </p>
 
@@ -17,15 +16,15 @@ A pocket music player with a haptic dial. Streams Spotify, plays local FLAC, and
 
 Currawong started, and remains, a gift. I started about three weeks before it was due, so time pressure was high, especially fitting it around work. I listen to a lot of music, and it brings me a lot of joy. One thing that feels increasingly problematic is the lack of intentionality in what we listen to and how we support artists. On top of this, I'm an increasing fan of the idea that something doesn't have to do everything, and that the friction between things leads to more intentionality. Hence the desire to build a dedicated music player, and a high-quality one at that.
 
-That being said, as Currawong is a gift, I did want versatility in this approach. The end goal is a device that can be used day to day with limited compromises, and one that is built with care and attention. Hopefully this means it can bring a little bit of joy every day.
+That being said, as Currawong is a gift, I did want versatility in this approach. The end goal is a device that can be used day to day with limited compromises, and one that is built with care and attention. Hopefully this means it can bring a little bit of joy every day. Because of that, Currawong supports both Spotify and offline FLAC/MP3 playback, with the weighting on offline functionality. It also supports wired and Bluetooth audio devices, again with more weight on the wired approach.
 
 ## Features
 
 **Playback**
 - Spotify Connect receiver via [go-librespot](https://github.com/devgianlu/go-librespot), shown as "Currawong" in the Spotify app
-- Local library (FLAC and other formats) via MPD, with artists, albums, playlists and an Up Next queue
-- Wired output through a Moondrop Dawn Pro 2 USB DAC with hardware volume, or Bluetooth A2DP via BlueALSA
-- Five-band equaliser on the wired output (alsaequal with CAPS Eq10, ±6 dB per band)
+- Local library (FLAC and other formats) via [MPD](https://www.musicpd.org/), with artists, albums, playlists and an Up Next queue
+- Wired output through a [Moondrop Dawn Pro 2](https://www.linsoul.com/products/moondrop-dawn-pro2) USB DAC with hardware volume, or Bluetooth A2DP via [BlueALSA](https://github.com/arkq/bluez-alsa)
+- Five-band equaliser on the wired output (alsaequal with [CAPS](https://wiki.linuxaudio.org/apps/all/caps) Eq10, ±6 dB per band)
 - Pinned Spotify playlists, shuffle, repeat, add to playlist
 - Browser upload page at `http://currawong.local` for adding music from any device on the same network
 
@@ -36,7 +35,7 @@ That being said, as Currawong is a gift, I did want versatility in this approach
 - On-screen keyboard for joining Wi-Fi, Bluetooth pairing, sleep and auto-off timers, and settings for dial feel, button click strength and screen rotation
 
 **Haptic dial**
-- Voltage-mode FOC on a DFRobot 2804 gimbal motor with an AS5600 magnetic encoder, using [SimpleFOC](https://simplefoc.com)
+- Voltage-mode FOC on a [DFRobot 2804](https://www.dfrobot.com/product-3005.html) gimbal motor with an AS5600 magnetic encoder, using [SimpleFOC](https://simplefoc.com)
 - The UI sets the dial's feel per screen: one detent per item with end stops in menus, 48 light clicks per turn for scrubbing with walls at 0:00 and the end of the track, one click per dB on the equaliser
 - Momentum coasting on long lists, stronger landmark clicks at each new letter, a magnetic pull to the playing track in Up Next
 - The dial spins a full turn on track skip and rolls while auto-scrubbing, and can be pocket-locked
@@ -70,15 +69,15 @@ flowchart LR
 
 | Part | Role |
 | --- | --- |
-| Raspberry Pi Zero W | Audio (go-librespot, MPD), UI, display, buttons |
-| Seeed XIAO ESP32-S3 | Haptic dial: FOC loop, encoder, UART link to the Pi |
-| SparkFun TMC6300 breakout | 3-phase motor driver |
-| DFRobot 2804 motor with AS5600 | Dial motor and angle sensor |
-| Adafruit Sharp 2.7" memory LCD | 400 × 240, 1-bit, mounted portrait |
-| Moondrop Dawn Pro 2 | USB DAC and headphone amp |
-| Adafruit MAX17048 | Battery fuel gauge |
-| Adafruit PowerBoost 1000C | Charger and 5 V boost |
-| Custom PCB (Currawong v1.0) | Carrier for all of the above, designed in KiCad |
+| [Raspberry Pi Zero W](https://www.raspberrypi.com/products/raspberry-pi-zero-w/) | Audio (go-librespot, MPD), UI, display, buttons |
+| [Seeed XIAO ESP32-S3](https://www.seeedstudio.com/XIAO-ESP32S3-p-5627.html) | Haptic dial: FOC loop, encoder, UART link to the Pi |
+| [SparkFun TMC6300 breakout](https://www.sparkfun.com/sparkfun-brushless-motor-driver-3-phase-tmc6300.html) | 3-phase motor driver |
+| [DFRobot 2804 motor with AS5600](https://www.dfrobot.com/product-3005.html) | Dial motor and angle sensor |
+| [Adafruit Sharp 2.7" memory LCD](https://www.adafruit.com/product/4694) | 400 × 240, 1-bit, mounted portrait |
+| [Moondrop Dawn Pro 2](https://www.linsoul.com/products/moondrop-dawn-pro2) | USB DAC and headphone amp |
+| [Adafruit MAX17048](https://www.adafruit.com/product/5580) | Battery fuel gauge |
+| [Adafruit PowerBoost 1000C](https://www.adafruit.com/product/2465) | Charger and 5 V boost |
+| Custom PCB (Currawong v1.0) | Carrier for all of the above, designed in [KiCad](https://www.kicad.org/) |
 
 <p align="center">
   <img src="docs/media/photos/schematic.png" width="440" alt="Schematic">
@@ -119,7 +118,7 @@ Many design decisions here were compromises for the sake of delivering on time, 
 
 ### The dial
 
-I saw a video a while ago on the open-source SmartKnob project and thought it was an incredibly cool and satisfying input method. Later I saw it again in two of Teenage Engineering's products, in particular the TP-7. For me this felt like the perfect input method for Currawong. It pulls inspiration from the iconic iPod click wheel, which carries an incredible amount of nostalgia and to me always felt a little like magic. The haptic dial takes it one step further by being physically responsive: something that feels unapologetically tactile. This is why it was a clear winner over a rotary encoder. While waiting for the haptic dial parts I used a rotary encoder as a placeholder, but it just wasn't right. It only truly felt like magic once the haptic dial was set up.
+I saw a video a while ago on the open-source [SmartKnob](https://github.com/scottbez1/smartknob) project and thought it was an incredibly cool and satisfying input method. Later I saw it again in two of Teenage Engineering's products, in particular the [TP-7](https://teenage.engineering/products/tp-7). For me this felt like the perfect input method for Currawong. It pulls inspiration from the iconic [iPod click wheel](https://en.wikipedia.org/wiki/IPod_click_wheel), which carries an incredible amount of nostalgia and to me always felt a little like magic. The haptic dial takes it one step further by being physically responsive: something that feels unapologetically tactile. This is why it was a clear winner over a rotary encoder. While waiting for the haptic dial parts I used a rotary encoder as a placeholder, but it just wasn't right. It only truly felt like magic once the haptic dial was set up.
 
 The feel changes with the screen. A menu gets one detent per item with walls at each end, scrubbing gets 48 light clicks per turn with walls at 0:00 and the end of the song, and the equaliser clicks once per dB. Flick through a long list and the clicks fade so it coasts, then come back as it slows. Each new letter in Artists and Albums clicks harder, and in Up Next the playing track pulls the dial in like a magnet.
 
@@ -136,7 +135,12 @@ The two talk over a 115200 baud UART using checksummed, NMEA-style lines. The Pi
 
 ### Living with a Pi Zero W
 
-Unfortunately, the original intention of using a Pi Zero 2 W had to be abandoned due to a complete shortage. Everywhere I looked there were none, or a long, long wait. I even tried alternatives like the Orange Pi, but the prices here were astronomical. In the end I was stuck with a Raspberry Pi Zero W, which meant some things had to be cut in the name of performance. The original idea had spectrum visualisers lining the sides of Now Playing and a separate one for a full-screen mode. The goal was to push the Sharp display to its limit. Sadly this had to be mostly shelved. It still exists in the code under a UI setting but hasn't been updated since the first couple of prototypes. Maybe next time.
+Unfortunately, the original intention of using a [Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) had to be abandoned due to a complete shortage. Everywhere I looked there were none, or a long, long wait. I even tried alternatives like the [Orange Pi](https://en.wikipedia.org/wiki/Orange_Pi), but the prices here were astronomical. In the end I was stuck with a Raspberry Pi Zero W, which meant some things had to be cut in the name of performance. The original idea had spectrum visualisers lining the sides of Now Playing and a separate one for a full-screen mode. The goal was to push the Sharp display to its limit. Sadly this had to be mostly shelved. It still exists in the code under a UI setting but hasn't been updated since the first couple of prototypes. Maybe next time.
+
+<p align="center">
+  <img src="docs/media/ui/now-playing-visuals.gif" width="180" alt="Now Playing with spectrum strips">
+  <img src="docs/media/ui/scope-anim.gif" width="180" alt="Scope page">
+</p>
 
 To keep everything else smooth on one core, go-librespot (about 35% CPU streaming at 320 kbps) runs at a higher priority than the UI, and only one player holds the DAC at a time. The UI only redraws when something on screen changes, and only sends the changed lines to the display, which takes about 50 ms for a full frame.
 
@@ -147,7 +151,6 @@ One of the key additions in achieving the goal of a little more joy was the anim
 Under the hood it's a sheet of 32 × 32 sprites driven by a JSON spec of sequences, ticking at 8 fps off the clock so a late frame never makes it drift. Each frame only touches the columns the bird is in, so the panel gets a small partial update rather than a full redraw.
 
 <p align="center">
-  <img src="docs/media/ui/bird-idle.gif" width="180" alt="Idle on the branch">
   <img src="docs/media/ui/bird-paused.gif" width="180" alt="Paused">
   <img src="docs/media/photos/boot-sprites.png" width="200" alt="Boot animation sprites">
 </p>
