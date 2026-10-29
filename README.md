@@ -7,8 +7,8 @@ A pocket music player with a haptic dial. Streams Spotify, plays local FLAC, and
 </p>
 
 <p align="center">
-  <img src="docs/media/ui/bird-playing.gif" width="180" alt="Now Playing with the currawong singing">
-  <img src="docs/media/ui/bird-menu.gif" width="180" alt="Main menu with the currawong in the corner">
+  <img src="docs/media/ui/playing.gif" width="180" alt="Now Playing with the currawong singing">
+  <img src="docs/media/ui/menu.gif" width="180" alt="Main menu with the currawong in the corner">
   <img src="docs/media/ui/equaliser.png" width="180" alt="Equaliser">
 </p>
 
@@ -151,7 +151,7 @@ One of the key additions in achieving the goal of a little more joy was the anim
 Under the hood it's a sheet of 32 × 32 sprites driven by a JSON spec of sequences, ticking at 8 fps off the clock so a late frame never makes it drift. Each frame only touches the columns the bird is in, so the panel gets a small partial update rather than a full redraw.
 
 <p align="center">
-  <img src="docs/media/ui/bird-paused.gif" width="180" alt="Paused">
+  <img src="docs/media/ui/paused.gif" width="180" alt="Paused">
   <img src="docs/media/photos/boot-sprites.png" width="200" alt="Boot animation sprites">
 </p>
 
