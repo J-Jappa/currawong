@@ -59,8 +59,8 @@ def make_snap(scene, playing):
     if scene in ("now", "menu", "paused", "sleep") or playing:
         s.has_track = True
         s.playing, s.paused = playing, not playing
-        s.source, s.uri, s.fmt = "spotify", "spotify:track:cloudbusting", ui.SPOTIFY_FORMAT
-        s.title, s.artists, s.album = "Cloudbusting", "Kate Bush", "Hounds of Love"
+        s.source, s.uri, s.fmt = "spotify", "spotify:track:demo", ui.SPOTIFY_FORMAT
+        s.title, s.artists, s.album = "LIFE KEEPS GOING", "Genesis Owusu", "REDSTAR WU & THE WORLDWIDE SCOURGE"
         s.pos, s.dur = 102_000, 254_000
         s.cover = None if scene == "menu" else ui._fake_cover()
     return s
